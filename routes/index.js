@@ -44,7 +44,7 @@ router.get('/students/:name', function(req, res, next) {
 });
 
 
-router.get('/newstudent/:name/:house_id/:year/:patronus',
+router.get('/students/new/:name/:house_id/:year/:patronus',
   function(req, res, next){
     var name = req.params.name,
         house_id = req.params.house_id,
@@ -61,7 +61,7 @@ router.get('/newstudent/:name/:house_id/:year/:patronus',
   })
 
 
-  router.get('/patronus/new/:patronus/:name',
+  router.get('/patronus/update/:name/:patronus',
     function(req, res, next){
       var patronus = req.params.patronus,
           name = req.params.name;
@@ -73,5 +73,18 @@ router.get('/newstudent/:name/:house_id/:year/:patronus',
         return next(err);
       })
     })
+
+  router.get('/students/delete/:name',
+      function(req, res, next){
+        var name = req.params.name;
+        //cant delete someone if they are referred on multiple tables
+        query.deleteStudent(name)
+        .then(function(){
+          res.redirect('/students');
+        })
+        .catch(function(err){
+          return next(err);
+        })
+      })
 
 module.exports = router;

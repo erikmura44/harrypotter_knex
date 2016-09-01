@@ -21,12 +21,16 @@ function insertNewStudent(name, house_id, year, patronus){
   })
 }
 
-function updateStudentPatronus(patronus, name){
+function updateStudentPatronus(name, patronus){
   return Students()
     .update({
       patronus: patronus
   })
     .where('name', name);
+}
+
+function deleteStudent(name){
+  return Students().where('name', name).del();
 }
 
 module.exports = {
@@ -35,6 +39,7 @@ module.exports = {
   getAllProfessors: Professors,
   insertNewStudent: insertNewStudent,
   updateStudentPatronus: updateStudentPatronus,
+  deleteStudent: deleteStudent,
   getStudentByName: function(name){
     return Students().where('name', name);
   }
