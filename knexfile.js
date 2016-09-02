@@ -3,8 +3,10 @@
 module.exports = {
 
   development: {
-    client: 'pg',
-    connection: 'postgres://localhost/hogwartz'
+    client: 'postgresql',
+    connection: {
+      database: 'heroku_with_postgres'
+    }
   },
 
   production: {
