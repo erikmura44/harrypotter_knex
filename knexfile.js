@@ -5,7 +5,7 @@ module.exports = {
   development: {
     client: 'postgresql',
     connection: {
-      database: 'heroku_with_postgres'
+      database: 'heroku_with_postgress'
     }
   },
 
